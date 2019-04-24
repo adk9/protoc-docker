@@ -16,9 +16,9 @@ RUN mkdir -p /tmp/protoc && \
     rm -r /tmp/protoc
 
 # install protoc-gen-go
-RUN go get -d -u github.com/golang/protobuf/protoc-gen-go
+RUN go get -u github.com/golang/protobuf/protoc-gen-go
 
 # install protoc-gen-doc
-RUN go get -d -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+RUN go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
 
 ENTRYPOINT ["/usr/local/bin/protoc", "-I/usr/local/include"]
