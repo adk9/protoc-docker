@@ -1,6 +1,6 @@
 FROM golang:1.12-alpine
 
-RUN apk add --no-cache build-base curl git zlib-dev unzip
+RUN apk add --no-cache curl git unzip
 
 # install protobuf
 ENV PB_VER 3.7.0
