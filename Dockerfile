@@ -21,5 +21,4 @@ RUN go get -d -u github.com/golang/protobuf/protoc-gen-go
 # install protoc-gen-doc
 RUN go get -d -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
 
-ENTRYPOINT ["/usr/local/bin/protoc", "-I/usr/include"]
-
+ENTRYPOINT ["/usr/local/bin/protoc", "-I/usr/local/include"]
