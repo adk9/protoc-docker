@@ -1,6 +1,6 @@
 # protoc
 
-Docker image for the Protocol Buffers `protoc` compiler based on Alpine Linux.
+Docker image for the Protocol Buffers `protoc` compiler.
 
 ## What's included:
 - protobuf 3.7.0

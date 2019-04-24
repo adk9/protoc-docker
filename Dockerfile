@@ -1,6 +1,6 @@
-FROM golang:1.12-alpine
+FROM golang:1.12
 
-RUN apk add --no-cache curl git unzip
+RUN apt-get update && apt-get -y install unzip && apt-get clean
 
 # install protobuf
 ENV PB_VER 3.7.0
@@ -11,7 +11,7 @@ RUN mkdir -p /tmp/protoc && \
     unzip protoc.zip && \
     cp /tmp/protoc/bin/protoc /usr/local/bin && \
     cp -R /tmp/protoc/include/* /usr/local/include && \
-    chmod go+rx /usr/local/bin/protoc && \
+    chmod a+x /usr/local/bin/protoc && \
     cd /tmp && \
     rm -r /tmp/protoc
 
@@ -19,7 +19,7 @@ RUN mkdir -p /tmp/protoc && \
 RUN go get -d -u github.com/golang/protobuf/protoc-gen-go
 
 # install protoc-gen-doc
-RUN go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+RUN go get -d -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
 
-ENTRYPOINT ["/usr/local/bin/protoc"]
+ENTRYPOINT ["/usr/local/bin/protoc", "-I/usr/include"]
 
